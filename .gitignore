@@ -4,4 +4,4 @@ chroma_db/
 _pycache_/
 *.pyc
 .idea/
-.vscode/
+.vscode/.idea/
