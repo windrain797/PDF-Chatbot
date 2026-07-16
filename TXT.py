@@ -5,8 +5,7 @@ from openai import OpenAI
 from langchain.embeddings.base import Embeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import Chroma
-
+from langchain_chroma import Chroma
 # ---------- 1. 自定义嵌入类（解决 LangChain 与硅基流动的兼容问题） ----------
 class SiliconFlowEmbeddings(Embeddings):
     def __init__(self, api_key: str, base_url: str, model: str):
@@ -37,8 +36,9 @@ if not API_KEY:
 PDF_NAME = "Python程序设计.pdf"        # 你的 PDF 文件名（确保与脚本同目录）
 EMBEDDING_MODEL = "BAAI/bge-large-zh-v1.5"  # 硅基流动支持的嵌入模型
 BASE_URL = "https://api.siliconflow.cn/v1"
-CHUNK_SIZE = 500                     # 分段大小（字符数）
-CHUNK_OVERLAP = 50                   # 分段重叠字符数
+CHUNK_SIZE = 300                    # 分段大小（字符数）
+CHUNK_OVERLAP = 30                   # 分段重叠字符数
+K = 3
 PERSIST_DIR = "./chroma_db"          # 向量库存储目录
 # =====================================
 
